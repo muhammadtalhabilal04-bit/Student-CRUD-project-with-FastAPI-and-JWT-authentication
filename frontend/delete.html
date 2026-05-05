@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DELETE /users/me</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section id="deleteRoot" class="panel">
+        <div class="brand">
+          <div>
+            <h1>DELETE Page</h1>
+            <p class="subtitle">Calls <span class="kbd">DELETE /users/me</span> (JWT required).</p>
+          </div>
+          <div class="row">
+            <a class="btn small" href="./dashboard.html">Back</a>
+            <button id="btnLogout" class="btn danger small" type="button">Logout</button>
+          </div>
+        </div>
+
+        <div id="message" class="msg hidden" aria-live="polite"></div>
+
+        <div class="panel" style="padding: 16px; margin-top: 10px">
+          <p class="hint" style="margin-top: 0">
+            This will permanently delete your account. A confirmation popup will appear.
+          </p>
+          <button id="btnDeleteAccount" class="btn danger" type="button">
+            Delete Account
+          </button>
+        </div>
+
+        <div class="panel" style="padding: 16px; margin-top: 12px">
+          <strong>Response</strong>
+          <pre id="output">{}</pre>
+        </div>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
+

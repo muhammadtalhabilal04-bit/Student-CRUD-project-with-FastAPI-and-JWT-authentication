@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>POST /users</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section id="postRoot" class="panel">
+        <div class="brand">
+          <div>
+            <h1>POST Page</h1>
+            <p class="subtitle">Calls <span class="kbd">POST /users</span> (JWT required).</p>
+          </div>
+          <div class="row">
+            <a class="btn small" href="./dashboard.html">Back</a>
+            <button id="btnLogout" class="btn danger small" type="button">Logout</button>
+          </div>
+        </div>
+
+        <div id="message" class="msg hidden" aria-live="polite"></div>
+
+        <form id="postForm" class="form" autocomplete="off" style="margin-top: 10px">
+          <label>
+            Email
+            <input id="postEmail" type="text" placeholder="newuser@example.com" required />
+          </label>
+          <label>
+            Password
+            <input id="postPassword" type="password" placeholder="password" required />
+          </label>
+
+          <div class="row">
+            <button class="btn primary" type="submit">Create User (POST)</button>
+            <span class="hint">Body is JSON</span>
+          </div>
+        </form>
+
+        <div class="panel" style="padding: 16px; margin-top: 12px">
+          <strong>Response</strong>
+          <pre id="output">{}</pre>
+        </div>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
+

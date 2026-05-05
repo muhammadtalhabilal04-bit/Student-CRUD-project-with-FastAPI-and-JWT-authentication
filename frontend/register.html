@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="panel">
+        <div class="brand">
+          <div>
+            <h1>Student CRUD • Register</h1>
+            <p class="subtitle">Create an account to get a JWT token.</p>
+          </div>
+        </div>
+
+        <!-- Message box (success/error) -->
+        <div id="message" class="msg hidden" aria-live="polite"></div>
+
+        <!-- Register form -->
+        <form id="registerForm" class="form" autocomplete="on">
+          <!-- Backend expects JSON { email, password } -->
+          <label>
+            Username / Email
+            <input
+              id="regEmail"
+              name="email"
+              type="text"
+              inputmode="email"
+              placeholder="name@example.com"
+              required
+            />
+          </label>
+
+          <label>
+            Password
+            <input
+              id="regPassword"
+              name="password"
+              type="password"
+              placeholder="Choose a strong password"
+              required
+              minlength="4"
+            />
+          </label>
+
+          <div class="row">
+            <button class="btn primary" type="submit">Register</button>
+            <span class="hint">
+              API: <span class="kbd">POST /users/register</span>
+            </span>
+          </div>
+        </form>
+
+        <p class="links">
+          Already have an account?
+          <a href="./login.html">Go to Login</a>
+        </p>
+
+        <p class="hint">
+          Note: This page sends JSON. Login uses <span class="kbd">x-www-form-urlencoded</span>
+          as required by FastAPI OAuth2 form.
+        </p>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
+

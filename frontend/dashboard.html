@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section id="dashboardRoot" class="panel">
+        <div class="brand">
+          <div>
+            <h1 id="welcome">Welcome User</h1>
+            <p class="subtitle">JWT-protected API actions (Bearer token).</p>
+          </div>
+          <div class="row">
+            <button id="btnLogout" class="btn danger small" type="button">Logout</button>
+          </div>
+        </div>
+
+        <!-- Message box (success/error/info) -->
+        <div id="message" class="msg hidden" aria-live="polite"></div>
+
+        <div class="grid" style="margin-top: 12px">
+          <div class="actions">
+            <button id="btnGet" class="btn primary" type="button">GET Data</button>
+            <button id="btnPost" class="btn" type="button">POST Data</button>
+            <button id="btnPut" class="btn" type="button">PUT Data</button>
+            <button id="btnDelete" class="btn danger" type="button">DELETE Data</button>
+          </div>
+
+          <div class="panel" style="padding: 16px">
+            <div class="row" style="margin-bottom: 6px">
+              <strong>Pages</strong>
+              <span class="hint">Separate pages for each action</span>
+            </div>
+            <div class="row" style="gap: 12px; justify-content: flex-start">
+              <a class="btn small" href="./get.html">Go to GET page</a>
+              <a class="btn small" href="./post.html">Go to POST page</a>
+              <a class="btn small" href="./put.html">Go to PUT page</a>
+              <a class="btn small danger" href="./delete.html">Go to DELETE page</a>
+            </div>
+          </div>
+
+          <div class="panel" style="padding: 16px">
+            <div class="row" style="margin-bottom: 10px">
+              <strong>API Response</strong>
+              <span class="hint">
+                All requests include: <span class="kbd">Authorization: Bearer &lt;token&gt;</span>
+              </span>
+            </div>
+            <pre id="output">{}</pre>
+          </div>
+
+          <p class="hint">
+            Notes:
+            - <span class="kbd">GET</span> calls <span class="kbd">/users/me</span>
+            - <span class="kbd">PUT</span> updates your password via <span class="kbd">PUT /users/me</span>
+            - <span class="kbd">DELETE</span> deletes your account via <span class="kbd">DELETE /users/me</span>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
+

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GET /users/me</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section id="getRoot" class="panel">
+        <div class="brand">
+          <div>
+            <h1>GET Page</h1>
+            <p class="subtitle">Calls <span class="kbd">GET /users/me</span> (JWT required).</p>
+          </div>
+          <div class="row">
+            <a class="btn small" href="./dashboard.html">Back</a>
+            <button id="btnLogout" class="btn danger small" type="button">Logout</button>
+          </div>
+        </div>
+
+        <div id="message" class="msg hidden" aria-live="polite"></div>
+
+        <div class="row" style="margin-top: 10px">
+          <button id="btnCall" class="btn primary" type="button">Call GET API</button>
+          <span class="hint">Adds header: <span class="kbd">Authorization: Bearer token</span></span>
+        </div>
+
+        <div class="panel" style="padding: 16px; margin-top: 12px">
+          <strong>Response</strong>
+          <pre id="output">{}</pre>
+        </div>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
+

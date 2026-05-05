@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="panel">
+        <div class="brand">
+          <div>
+            <h1>Student CRUD • Login</h1>
+            <p class="subtitle">Sign in to access the dashboard.</p>
+          </div>
+        </div>
+
+        <!-- Message box (success/error) -->
+        <div id="message" class="msg hidden" aria-live="polite"></div>
+
+        <!-- Login form -->
+        <form id="loginForm" class="form" autocomplete="on">
+          <!-- IMPORTANT: backend uses OAuth2PasswordRequestForm (username/password) -->
+          <label>
+            Username / Email
+            <input
+              id="loginUsername"
+              name="username"
+              type="text"
+              inputmode="email"
+              placeholder="name@example.com"
+              required
+            />
+          </label>
+
+          <label>
+            Password
+            <input
+              id="loginPassword"
+              name="password"
+              type="password"
+              placeholder="Your password"
+              required
+            />
+          </label>
+
+          <div class="row">
+            <button class="btn primary" type="submit">Login</button>
+            <span class="hint">
+              Body: <span class="kbd">username=...&amp;password=...</span>
+            </span>
+          </div>
+        </form>
+
+        <p class="links">
+          New here?
+          <a href="./register.html">Create an account</a>
+        </p>
+
+        <p class="hint">
+          On success we store <span class="kbd">access_token</span> in
+          <span class="kbd">localStorage</span> and redirect to <span class="kbd">dashboard.html</span>.
+        </p>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
+
