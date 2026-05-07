@@ -1,12 +1,4 @@
-/* =========================================================
-   Vanilla JS frontend for FastAPI JWT auth (no frameworks).
-   Pages:
-   - register.html -> POST /users/register (JSON)
-   - login.html    -> POST /users/login (x-www-form-urlencoded)
-   - dashboard.html (requires token) -> /users/me via GET/PUT/DELETE
-   ========================================================= */
 
-// Use this exact base URL (per project requirement).
 const API_BASE = "http://127.0.0.1:8000";
 
 const TOKEN_KEY = "token";
@@ -32,7 +24,7 @@ function redirectTo(path) {
 }
 
 function showMessage(el, text, type) {
-  // type: "success" | "error" | "info"
+  
   if (!el) return;
   el.textContent = text;
   el.classList.remove("hidden", "success", "error", "info");
@@ -47,7 +39,7 @@ function hideMessage(el) {
 }
 
 async function readErrorMessage(res) {
-  // FastAPI errors are typically: { "detail": "..." } or { "detail": [...] }
+  
   const contentType = res.headers.get("content-type") || "";
   try {
     if (contentType.includes("application/json")) {
@@ -76,7 +68,7 @@ async function apiFetch(path, options) {
     err.status = res.status;
     throw err;
   }
-  // Some endpoints might return no content (204).
+  
   if (res.status === 204) return null;
 
   const contentType = res.headers.get("content-type") || "";
@@ -100,7 +92,7 @@ function prettyPrint(data) {
 }
 
 async function loadCurrentUser() {
-  // Protected endpoint to prove the token works and get the user's email.
+ 
   return await apiFetch("/users/me", {
     method: "GET",
     headers: {
@@ -324,7 +316,7 @@ function bindRegisterPage() {
         body: JSON.stringify({ email, password }),
       });
 
-      // Success: show message and let user go to login.
+      
       showMessage(
         msg,
         `Registered successfully for ${data?.email || email}. You can now log in.`,
@@ -356,7 +348,7 @@ function bindLoginPage() {
       return;
     }
 
-    // IMPORTANT: FastAPI OAuth2PasswordRequestForm expects x-www-form-urlencoded
+   
     const body = new URLSearchParams();
     body.set("username", username);
     body.set("password", password);
@@ -400,32 +392,32 @@ function bindDashboardPage() {
   hideMessage(msg);
   if (output) output.textContent = "";
 
-  // Logout
+  
   btnLogout?.addEventListener("click", () => {
     clearToken();
     redirectTo("login.html");
   });
 
-  // On load: show current user
+  
   (async () => {
     try {
       const me = await loadCurrentUser();
       if (welcome) welcome.textContent = `Welcome ${me?.email || "User"}`;
       showMessage(msg, "Token is valid. You’re authenticated.", "success");
     } catch (err) {
-      // Token invalid/expired -> kick to login
+      
       clearToken();
       redirectTo("login.html");
     }
   })();
 
-  // Helper to render responses
+ 
   function render(data) {
     if (!output) return;
     output.textContent = prettyPrint(data);
   }
 
-  // GET -> /users/me
+ 
   btnGet?.addEventListener("click", async () => {
     hideMessage(msg);
     render("");
@@ -444,9 +436,7 @@ function bindDashboardPage() {
     }
   });
 
-  // POST -> no protected POST in your shown routes, so we demonstrate an authenticated call
-  // by calling GET /users (list) but keep the button labeled POST per your requirements.
-  // If your backend later adds a protected POST endpoint, just update this path.
+
   btnPost?.addEventListener("click", async () => {
     hideMessage(msg);
     render("");
@@ -469,13 +459,12 @@ function bindDashboardPage() {
     }
   });
 
-  // PUT -> /users/me (update email/password)
+  
   btnPut?.addEventListener("click", async () => {
     hideMessage(msg);
     render("");
 
-    // Basic demo: update password only (no email change).
-    // If you prefer, you can change this to prompt for email too.
+  
     const newPassword = prompt("Enter a new password for your account:");
     if (newPassword == null) return;
     if (!newPassword) {
@@ -500,7 +489,7 @@ function bindDashboardPage() {
     }
   });
 
-  // DELETE -> /users/me
+ 
   btnDelete?.addEventListener("click", async () => {
     hideMessage(msg);
     render("");
@@ -528,7 +517,7 @@ function bindDashboardPage() {
   });
 }
 
-// Entry point: detect which page we’re on and bind handlers.
+
 document.addEventListener("DOMContentLoaded", () => {
   bindRegisterPage();
   bindLoginPage();
