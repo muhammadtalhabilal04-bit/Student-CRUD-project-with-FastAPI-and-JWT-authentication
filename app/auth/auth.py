@@ -3,8 +3,7 @@ from jose import jwt
 from datetime import datetime, timedelta
 from app.config import SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES
 
-# NOTE: bcrypt backend has compatibility issues on some Windows/Python combos.
-# pbkdf2_sha256 is widely supported and avoids external bcrypt backend quirks.
+
 pwd_context = CryptContext(schemes=["pbkdf2_sha256"], deprecated="auto")
 
 def hash_password(password: str):
