@@ -63,7 +63,7 @@ def create_user_protected(
     - Requires a valid JWT token
     - Uses current_user dependency (even if not used directly)
     """
-    _ = current_user  # keep it explicit for beginners
+    _ = current_user  
 
     existing = get_user_by_email(db, payload.email)
     if existing:
