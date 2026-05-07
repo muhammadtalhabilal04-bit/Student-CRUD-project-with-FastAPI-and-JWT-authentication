@@ -7,11 +7,11 @@ from app.models import user as _user_model
 
 app = FastAPI()
 
-# CORS for local frontend (dev-friendly).
+# CORS for local frontend 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # allow all (for development)
-    allow_credentials=False,  # must be False when allow_origins=["*"]
+    allow_origins=["*"],  
+    allow_credentials=False,  
     allow_methods=["*"],
     allow_headers=["*"],
 )
