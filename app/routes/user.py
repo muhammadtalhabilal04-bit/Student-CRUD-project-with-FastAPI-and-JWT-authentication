@@ -27,9 +27,7 @@ def register(user: UserCreate, db: Session = Depends(get_db)):
 
 @router.post("/login", response_model=Token)
 def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
-    # FIX: Swagger OAuth2 sends x-www-form-urlencoded (form-data), not JSON.
-    # OAuth2PasswordRequestForm provides `username` + `password` fields.
-    # We treat `username` as the user's email.
+
     db_user = get_user_by_email(db, form_data.username)
 
     if not db_user or not verify_password(form_data.password, db_user.hashed_password):
