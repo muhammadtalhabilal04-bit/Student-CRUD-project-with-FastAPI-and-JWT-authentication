@@ -7,8 +7,7 @@ from app.config import ALGORITHM, SECRET_KEY
 from app.crud.user import get_user_by_id
 from app.deps.db import get_db
 
-# Swagger OAuth2 "Authorize" uses this tokenUrl to call the login endpoint.
-# IMPORTANT: use a relative URL (no leading slash) so Swagger builds it correctly.
+
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="users/login")
 
 
